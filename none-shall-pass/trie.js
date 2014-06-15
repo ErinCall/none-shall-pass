@@ -30,6 +30,9 @@ module.exports = (function() {
         };
 
         this.addMany = function(words) {
+            for (var i=0; i < words.length; i++) {
+                this.add(words[i]);
+            }
         };
 
     };
