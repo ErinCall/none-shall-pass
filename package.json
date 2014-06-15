@@ -1,0 +1,15 @@
+{
+  "name": "none-shall-pass",
+  "version": "0.0.0",
+  "description": "Better password strength checker",
+  "main": "index.js",
+  "scripts": {
+    "test": "buster-test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.andrewlorente.com:AndrewLorente/none-shall-pass.git"
+  },
+  "author": "Andrew Lorente",
+  "license": "MIT"
+}
