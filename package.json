@@ -11,5 +11,12 @@
     "url": "git@git.andrewlorente.com:AndrewLorente/none-shall-pass.git"
   },
   "author": "Andrew Lorente",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://git.andrewlorente.com/AndrewLorente/none-shall-pass/issues",
+    "email": "none-shall-pass-bugs@andrewlorente.com"
+  },
+  "devDependencies": {
+    "buster": "0.7.13"
+  }
 }
