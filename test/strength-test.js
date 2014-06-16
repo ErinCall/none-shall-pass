@@ -1,3 +1,6 @@
+/*jslint node: true */
+'use strict';
+
 var buster = require("buster");
 var assert = buster.referee.assert;
 var strength = require('../none-shall-pass/strength').strength;

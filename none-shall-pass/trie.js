@@ -1,3 +1,6 @@
+/*jslint node: true */
+'use strict';
+
 var lookup = function(head, rest) {
     if (rest.length === 0) {
         return true;

@@ -1,3 +1,6 @@
+/*jslint node: true */
+'use strict';
+
 var buster = require("buster");
 var trielib = require('../none-shall-pass/trie'),
     Trie = trielib.Trie,

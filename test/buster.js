@@ -1,3 +1,6 @@
+/*jslint node: true */
+'use strict';
+
 var config = module.exports;
 
 config["My tests"] = {

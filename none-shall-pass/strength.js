@@ -1,3 +1,6 @@
+/*jslint node: true */
+'use strict';
+
 var Trie = require("./trie").Trie;
 var commonPasswords = require("./common_passwords").commonPasswords;
 var englishWords = require("./english_words").englishWords;
