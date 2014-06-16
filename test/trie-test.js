@@ -1,5 +1,7 @@
 var buster = require("buster");
-var Trie = require('../none-shall-pass/trie').Trie;
+var trielib = require('../none-shall-pass/trie'),
+    Trie = trielib.Trie,
+    LeetTrie = trielib.LeetTrie;
 var assert = buster.referee.assert;
 
 buster.testCase("Tries should support lookup", {
@@ -34,5 +36,11 @@ buster.testCase("Tries should support lookup", {
         assert(trie.has("from"));
         assert(trie.has("runaround"));
         assert(trie.has("sue"));
-    }
+    },
+    "look up a leet version of a word": function() {
+        var trie = new LeetTrie();
+
+        trie.add("house");
+        assert(trie.has("h0use"));
+    },
 });
