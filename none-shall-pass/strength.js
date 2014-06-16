@@ -1,14 +1,19 @@
 var Trie = require("./trie").Trie;
 var commonPasswords = require("./common_passwords").commonPasswords;
+var englishWords = require("./english_words").englishWords;
 
 module.exports = (function() {
-    var trie = new Trie();
+    var common = new Trie(),
+        english = new Trie();
 
-    trie.addMany(commonPasswords);
+    common.addMany(commonPasswords);
+    english.addMany(englishWords);
 
     var strength = function(word){
-        if (trie.has(word)) {
+        if (common.has(word)) {
             return "common";
+        } else if (english.has(word)) {
+            return "english";
         } else {
             return "strong";
         }
