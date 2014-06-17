@@ -1,6 +1,8 @@
 /*jslint node: true */
 'use strict';
 
+var leetSubstitutions = require('./leet_substitutions');
+
 var lookup = function(head, rest) {
     if (rest.length === 0) {
         return true;
@@ -10,7 +12,6 @@ var lookup = function(head, rest) {
         return false;
     }
 };
-
 
 var Trie = function Trie(){
     this._trie = {};
@@ -46,12 +47,27 @@ var Trie = function Trie(){
 var LeetTrie = function LeetTrie() {
     Trie.call(this);
     this.has = function(word) {
-        var head = word.slice(0,1),
-            rest = word.slice(1);
+        var head, rest;
 
-        if (head === '0') {
-            head = 'o';
+        for (var metachar in leetSubstitutions) {
+            if (! leetSubstitutions.hasOwnProperty(metachar)) {
+                continue;
+            }
+            if (word.slice(0, metachar.length) === metachar) {
+                var heads = leetSubstitutions[metachar];
+                rest = word.slice(metachar.length);
+
+                for (var i=0; i < heads.length; i++) {
+                    head = heads[i];
+
+                    if (lookup.call(this, head, rest)) {
+                        return true;
+                    }
+                }
+            }
         }
+        head = word.slice(0,1);
+        rest = word.slice(1);
 
         return lookup.call(this, head, rest);
     };

@@ -39,11 +39,21 @@ buster.testCase("Tries should support lookup", {
         assert(trie.has("from"));
         assert(trie.has("runaround"));
         assert(trie.has("sue"));
-    },
+    }
+});
+
+buster.testCase("LeetTries should support leet lookup", {
     "look up a leet version of a word": function() {
         var trie = new LeetTrie();
 
         trie.add("house");
         assert(trie.has("h0use"));
+        assert(trie.has("|-|()|_|53"));
     },
+    "leet characters can still be found in their literal form": function() {
+        var trie = new LeetTrie();
+
+        trie.add('take1pill');
+        assert(trie.has('take1pill'));
+    }
 });
