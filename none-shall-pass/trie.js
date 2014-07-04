@@ -4,10 +4,12 @@
 var leetSubstitutions = require('./leet_substitutions');
 
 var lookup = function(head, rest) {
-    if (rest.length === 0) {
-        return true;
-    } else if (head in this._trie) {
-        return this._trie[head].has(rest);
+    if (head in this._trie) {
+        if (rest === '') {
+            return this._trie[head]._terminates;
+        } else {
+            return this._trie[head].has(rest);
+        }
     } else {
         return false;
     }
@@ -15,6 +17,7 @@ var lookup = function(head, rest) {
 
 var Trie = function Trie(){
     this._trie = {};
+    this._terminates = false;
 
     this.add = function(word) {
         var head = word.slice(0,1),
@@ -25,6 +28,7 @@ var Trie = function Trie(){
         }
 
         if (rest.length === 0) {
+            this._trie[head]._terminates = true;
             return;
         } else {
             this._trie[head].add(rest);

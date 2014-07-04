@@ -39,6 +39,15 @@ buster.testCase("Tries should support lookup", {
         assert(trie.has("from"));
         assert(trie.has("runaround"));
         assert(trie.has("sue"));
+    },
+    "subwords are not members of a trie": function() {
+        var trie = new Trie();
+
+        trie.add("bolt");
+        assert(! trie.has("b"));
+        assert(! trie.has("bo"));
+        assert(! trie.has("bol"));
+        assert(trie.has("bolt"));
     }
 });
 
