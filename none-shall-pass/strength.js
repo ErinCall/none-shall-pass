@@ -19,6 +19,9 @@ module.exports = (function() {
     leet.addMany(commonPasswords);
 
     checks = [
+        ["short", function(word) {
+            return word.length <= 7;
+        }],
         ["common", function(word) {
             return common.has(word);
         }],

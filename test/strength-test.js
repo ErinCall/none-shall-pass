@@ -6,6 +6,9 @@ var assert = buster.referee.assert;
 var strength = require('../none-shall-pass/strength').strength;
 
 buster.testCase("Test password strength", {
+    "very short password": function() {
+        assert.equals(strength("bat"), "short");
+    },
     "very common password": function() {
         assert.equals(strength("password"), "common");
     },
