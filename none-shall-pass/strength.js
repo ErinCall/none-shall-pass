@@ -7,19 +7,28 @@ var englishWords = require("./english_words").englishWords;
 
 module.exports = (function() {
     var common = new Trie(),
-        english = new Trie();
+        english = new Trie(),
+        checks;
 
     common.addMany(commonPasswords);
     english.addMany(englishWords);
 
-    var strength = function(word){
-        if (common.has(word)) {
-            return "common";
-        } else if (english.has(word)) {
-            return "english";
-        } else {
-            return "strong";
+    checks = [
+        ["common", function(word) {
+            return common.has(word);
+        }],
+        ["english", function(word) {
+            return english.has(word);
+        }]
+    ];
+
+    var strength = function(word) {
+        for (var i=0; i < checks.length; i++) {
+            if (checks[i][1](word)) {
+                return checks[i][0];
+            }
         }
+        return "strong";
     };
 
     return {
