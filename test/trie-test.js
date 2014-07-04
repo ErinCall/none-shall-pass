@@ -48,6 +48,13 @@ buster.testCase("Tries should support lookup", {
         assert(! trie.has("bo"));
         assert(! trie.has("bol"));
         assert(trie.has("bolt"));
+    },
+    "add and lookup are case-insensitive": function() {
+        var trie = new Trie();
+
+        trie.add("GrAyCeOn");
+        assert(trie.has("grayceon"));
+        assert(trie.has("gRaYcEoN"));
     }
 });
 

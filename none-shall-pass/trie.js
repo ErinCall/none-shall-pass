@@ -4,6 +4,8 @@
 var leetSubstitutions = require('./leet_substitutions');
 
 var lookup = function(head, rest) {
+    head = head.toLowerCase();
+
     if (head in this._trie) {
         if (rest === '') {
             return this._trie[head]._terminates;
@@ -20,8 +22,8 @@ var Trie = function Trie(){
     this._terminates = false;
 
     this.add = function(word) {
-        var head = word.slice(0,1),
-            rest = word.slice(1);
+        var head = word.slice(0,1).toLowerCase(),
+            rest = word.slice(1).toLowerCase();
 
         if (typeof this._trie[head] === 'undefined') {
             this._trie[head] = new this.constructor();
