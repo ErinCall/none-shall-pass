@@ -1,17 +1,22 @@
 /*jslint node: true */
 'use strict';
 
-var Trie = require("./trie").Trie;
+var trielib = require("./trie"),
+    Trie = trielib.Trie,
+    LeetTrie = trielib.LeetTrie;
 var commonPasswords = require("./common_passwords").commonPasswords;
 var englishWords = require("./english_words").englishWords;
 
 module.exports = (function() {
     var common = new Trie(),
         english = new Trie(),
+        leet = new LeetTrie(),
         checks;
 
     common.addMany(commonPasswords);
     english.addMany(englishWords);
+    leet.addMany(englishWords);
+    leet.addMany(commonPasswords);
 
     checks = [
         ["common", function(word) {
@@ -19,6 +24,9 @@ module.exports = (function() {
         }],
         ["english", function(word) {
             return english.has(word);
+        }],
+        ["leet",    function(word) {
+            return leet.has(word);
         }]
     ];
 

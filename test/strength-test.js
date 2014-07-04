@@ -12,6 +12,9 @@ buster.testCase("Test password strength", {
     "unmodified english word": function () {
         assert.equals(strength("imaginative"), "english");
     },
+    "leet-ified word": function() {
+        assert.equals(strength("1m4g!n4t|v3"), "leet");
+    },
     "very strong password": function() {
         assert.equals(
             strength("Goi_lee4el1Xei/poug4Roo^eeM3derbei0Cae(aeQu5pu#"),
